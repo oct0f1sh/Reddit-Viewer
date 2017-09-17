@@ -44,6 +44,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="subredditLabel" destination="zjR-Hc-Fd0" id="9Lz-VK-fJi"/>
+                                            <segue destination="Dof-aa-Wdn" kind="show" id="bd5-f6-J21"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
