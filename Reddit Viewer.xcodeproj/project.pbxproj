@@ -11,6 +11,9 @@
 		AE9EE6731F6E1A70006DBDCA /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9EE6721F6E1A70006DBDCA /* ImageService.swift */; };
 		AE9EE6781F6E2214006DBDCA /* SubredditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9EE6771F6E2214006DBDCA /* SubredditCell.swift */; };
 		AE9EE67B1F6E23DC006DBDCA /* UITableView+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9EE67A1F6E23DC006DBDCA /* UITableView+Cell.swift */; };
+		AE9EE67E1F6E2952006DBDCA /* Reddit Viewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AE9EE67C1F6E2952006DBDCA /* Reddit Viewer.xcdatamodeld */; };
+		AE9EE6801F6E2A29006DBDCA /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9EE67F1F6E2A29006DBDCA /* UIViewController+Alert.swift */; };
+		AE9EE6831F6E2E9E006DBDCA /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9EE6821F6E2E9E006DBDCA /* CoreDataHelper.swift */; };
 		AEF9663D1F6E16A2004722F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF9663C1F6E16A2004722F4 /* AppDelegate.swift */; };
 		AEF9663F1F6E16A2004722F4 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF9663E1F6E16A2004722F4 /* CollectionViewController.swift */; };
 		AEF966421F6E16A2004722F4 /* Collection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEF966401F6E16A2004722F4 /* Collection.storyboard */; };
@@ -24,6 +27,9 @@
 		AE9EE6721F6E1A70006DBDCA /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		AE9EE6771F6E2214006DBDCA /* SubredditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubredditCell.swift; sourceTree = "<group>"; };
 		AE9EE67A1F6E23DC006DBDCA /* UITableView+Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Cell.swift"; sourceTree = "<group>"; };
+		AE9EE67D1F6E2952006DBDCA /* Reddit Viewer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Reddit Viewer.xcdatamodel"; sourceTree = "<group>"; };
+		AE9EE67F1F6E2A29006DBDCA /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		AE9EE6821F6E2E9E006DBDCA /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		AEF966391F6E16A2004722F4 /* Reddit Viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reddit Viewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEF9663C1F6E16A2004722F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEF9663E1F6E16A2004722F4 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				AEF9663C1F6E16A2004722F4 /* AppDelegate.swift */,
+				AE9EE67C1F6E2952006DBDCA /* Reddit Viewer.xcdatamodeld */,
 				AEF966481F6E16A2004722F4 /* Info.plist */,
 				AEF966451F6E16A2004722F4 /* LaunchScreen.storyboard */,
 			);
@@ -109,8 +116,17 @@
 			isa = PBXGroup;
 			children = (
 				AE9EE67A1F6E23DC006DBDCA /* UITableView+Cell.swift */,
+				AE9EE67F1F6E2A29006DBDCA /* UIViewController+Alert.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AE9EE6811F6E2E94006DBDCA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AE9EE6821F6E2E9E006DBDCA /* CoreDataHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		AEF966301F6E16A2004722F4 = {
@@ -134,6 +150,7 @@
 		AEF9663B1F6E16A2004722F4 /* Reddit Viewer */ = {
 			isa = PBXGroup;
 			children = (
+				AE9EE6811F6E2E94006DBDCA /* Helpers */,
 				AE9EE6791F6E23C6006DBDCA /* Extensions */,
 				AE9EE6761F6E21F1006DBDCA /* Views */,
 				AE9EE6741F6E1BBB006DBDCA /* Supporting Files */,
@@ -270,8 +287,11 @@
 				AE9EE67B1F6E23DC006DBDCA /* UITableView+Cell.swift in Sources */,
 				AEF9663F1F6E16A2004722F4 /* CollectionViewController.swift in Sources */,
 				AEF9663D1F6E16A2004722F4 /* AppDelegate.swift in Sources */,
+				AE9EE6831F6E2E9E006DBDCA /* CoreDataHelper.swift in Sources */,
 				AE9EE6731F6E1A70006DBDCA /* ImageService.swift in Sources */,
+				AE9EE67E1F6E2952006DBDCA /* Reddit Viewer.xcdatamodeld in Sources */,
 				AE9EE6781F6E2214006DBDCA /* SubredditCell.swift in Sources */,
+				AE9EE6801F6E2A29006DBDCA /* UIViewController+Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +478,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AE9EE67C1F6E2952006DBDCA /* Reddit Viewer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AE9EE67D1F6E2952006DBDCA /* Reddit Viewer.xcdatamodel */,
+			);
+			currentVersion = AE9EE67D1F6E2952006DBDCA /* Reddit Viewer.xcdatamodel */;
+			path = "Reddit Viewer.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AEF966311F6E16A2004722F4 /* Project object */;
 }

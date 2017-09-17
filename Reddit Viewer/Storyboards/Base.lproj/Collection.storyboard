@@ -42,6 +42,9 @@
                                                 <constraint firstItem="zjR-Hc-Fd0" firstAttribute="centerY" secondItem="Qh1-wh-uk8" secondAttribute="centerY" id="mnX-yi-db5"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="subredditLabel" destination="zjR-Hc-Fd0" id="9Lz-VK-fJi"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -73,6 +76,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1357.5" y="173.2394366197183"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Et0-Xq-ccm">
+            <objects>
+                <viewController id="Dof-aa-Wdn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ff0-8D-aL1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="rak-mo-rtN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bfN-q9-aQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2499" y="174"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="n7c-PX-sTx">
