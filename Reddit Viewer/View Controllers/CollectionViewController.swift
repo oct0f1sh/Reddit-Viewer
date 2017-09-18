@@ -27,7 +27,7 @@ class CollectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func addSubredditTapped(_ sender: Any) {
-        self.showInputTextAlert(title: "Add SubReddit", message: "Input the name of the SubReddit you want to add:", placeholder: "SubReddit") { (subreddit) in
+        self.showInputTextAlert(title: "Add SubReddit", message: "Input the name of the Subreddit you want to add:", placeholder: "SubReddit") { (subreddit) in
             guard let subreddit = subreddit else { return }
             let newSubreddit = CoreDataHelper.addSubreddit()
             newSubreddit.subredditName = subreddit

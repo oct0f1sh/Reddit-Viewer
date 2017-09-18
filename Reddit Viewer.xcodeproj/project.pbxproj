@@ -19,6 +19,7 @@
 		AEF966421F6E16A2004722F4 /* Collection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEF966401F6E16A2004722F4 /* Collection.storyboard */; };
 		AEF966441F6E16A2004722F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEF966431F6E16A2004722F4 /* Assets.xcassets */; };
 		AEF966471F6E16A2004722F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEF966451F6E16A2004722F4 /* LaunchScreen.storyboard */; };
+		AEFBBB5F1F70504B0069CB8E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFBBB5E1F70504B0069CB8E /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		AEF966431F6E16A2004722F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEF966461F6E16A2004722F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AEF966481F6E16A2004722F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEFBBB5E1F70504B0069CB8E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		B3F29060A5A60513D0C5FC2D /* Pods_Reddit_Viewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reddit_Viewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -150,6 +152,7 @@
 		AEF9663B1F6E16A2004722F4 /* Reddit Viewer */ = {
 			isa = PBXGroup;
 			children = (
+				AEFBBB5D1F70503E0069CB8E /* Models */,
 				AE9EE6811F6E2E94006DBDCA /* Helpers */,
 				AE9EE6791F6E23C6006DBDCA /* Extensions */,
 				AE9EE6761F6E21F1006DBDCA /* Views */,
@@ -160,6 +163,14 @@
 				AEF966431F6E16A2004722F4 /* Assets.xcassets */,
 			);
 			path = "Reddit Viewer";
+			sourceTree = "<group>";
+		};
+		AEFBBB5D1F70503E0069CB8E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AEFBBB5E1F70504B0069CB8E /* Post.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +301,7 @@
 				AE9EE6831F6E2E9E006DBDCA /* CoreDataHelper.swift in Sources */,
 				AE9EE6731F6E1A70006DBDCA /* ImageService.swift in Sources */,
 				AE9EE67E1F6E2952006DBDCA /* Reddit Viewer.xcdatamodeld in Sources */,
+				AEFBBB5F1F70504B0069CB8E /* Post.swift in Sources */,
 				AE9EE6781F6E2214006DBDCA /* SubredditCell.swift in Sources */,
 				AE9EE6801F6E2A29006DBDCA /* UIViewController+Alert.swift in Sources */,
 			);
