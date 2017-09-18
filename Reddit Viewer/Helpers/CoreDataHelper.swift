@@ -19,7 +19,7 @@ class CoreDataHelper {
         return subreddit
     }
     
-    // I'm putting this in so I can committ
+    // I'm putting this in so I can commit
     
     static func saveSubreddit() {
         do {
