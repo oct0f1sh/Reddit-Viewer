@@ -52,7 +52,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="subredditLabel" destination="zjR-Hc-Fd0" id="9Lz-VK-fJi"/>
-                                            <segue destination="jIw-yv-LQB" kind="show" id="cIi-NJ-7ja"/>
+                                            <segue destination="GWm-Do-LkC" kind="show" id="TTj-P7-UkY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -72,6 +72,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Oxb-D4-ZSc">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="vUN-pq-CLx"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vbd-d6-cYY">
                             <connections>
                                 <action selector="addSubredditTapped:" destination="BYZ-38-t0r" id="wTG-Ua-vLk"/>
@@ -87,47 +88,52 @@
             <point key="canvasLocation" x="1357.5" y="173.2394366197183"/>
         </scene>
         <!--Subreddit Image View Controller-->
-        <scene sceneID="Nif-zY-e9n">
+        <scene sceneID="7Gk-iC-Jhb">
             <objects>
-                <viewController id="jIw-yv-LQB" customClass="SubredditImageViewController" customModule="Reddit_Viewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="YvX-q2-5ja">
+                <collectionViewController id="GWm-Do-LkC" customClass="SubredditImageViewController" customModule="Reddit_Viewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="alG-6K-DDG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZJU-CE-BCS">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="z65-Uy-fj3">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ThumbnailCell" id="ku9-12-Ukf" customClass="ThumbnailCell" customModule="Reddit_Viewer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="ZJU-CE-BCS" firstAttribute="leading" secondItem="YvX-q2-5ja" secondAttribute="leading" id="HMc-k2-TQ1"/>
-                            <constraint firstItem="ZJU-CE-BCS" firstAttribute="top" secondItem="x5n-ab-TuR" secondAttribute="top" id="HSg-RJ-OpF"/>
-                            <constraint firstAttribute="trailing" secondItem="ZJU-CE-BCS" secondAttribute="trailing" id="duc-Iw-plh"/>
-                            <constraint firstAttribute="bottom" secondItem="ZJU-CE-BCS" secondAttribute="bottom" id="qcP-sT-fQz"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="x5n-ab-TuR"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EuW-CF-QiY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BIT-j5-9B8">
+                            <size key="itemSize" width="95" height="97"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ThumbnailCell" id="qrf-yJ-IRF" customClass="ThumbnailCell" customModule="Reddit_Viewer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="95" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="95" height="97"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rnQ-PN-jkP">
+                                            <rect key="frame" x="0.0" y="0.0" width="95" height="97"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="rnQ-PN-jkP" firstAttribute="top" secondItem="qrf-yJ-IRF" secondAttribute="top" id="6us-5u-aW9"/>
+                                    <constraint firstAttribute="bottom" secondItem="rnQ-PN-jkP" secondAttribute="bottom" id="Aqh-G3-VuW"/>
+                                    <constraint firstItem="rnQ-PN-jkP" firstAttribute="leading" secondItem="qrf-yJ-IRF" secondAttribute="leading" id="NwH-Q4-gfG"/>
+                                    <constraint firstAttribute="trailing" secondItem="rnQ-PN-jkP" secondAttribute="trailing" id="PkW-zc-aEh"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="thumbnailImageView" destination="rnQ-PN-jkP" id="WSD-w4-Caz"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="GWm-Do-LkC" id="AbU-hI-gu6"/>
+                            <outlet property="delegate" destination="GWm-Do-LkC" id="XaO-O5-ugS"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3yq-hw-gOG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2297" y="174"/>
+            <point key="canvasLocation" x="2512.5" y="173.2394366197183"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="n7c-PX-sTx">
