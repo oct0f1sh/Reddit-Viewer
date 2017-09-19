@@ -19,7 +19,7 @@ class Images {
         self.thumbnailURL = thumbnailURL
     }
     
-    func downloadFullImage() {
+    func downloadFullImage(completion: @escaping () -> Void) {
         let dg = DispatchGroup()
         
         if let fullImageURL = self.fullImageURL {
@@ -28,6 +28,9 @@ class Images {
                 self.fullImage = img
                 dg.leave()
             })
+        }
+        dg.notify(queue: .main) {
+            completion()
         }
     }
     

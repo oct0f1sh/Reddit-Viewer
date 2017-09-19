@@ -125,6 +125,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="thumbnailImageView" destination="qT7-G0-5iw" id="is6-Iy-2bz"/>
+                                            <segue destination="Qtq-r9-TQ2" kind="show" identifier="toImageView" id="ivy-dD-OUw"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -152,6 +153,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EuW-CF-QiY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2297" y="174"/>
+        </scene>
+        <!--ImageView-->
+        <scene sceneID="SeM-Wq-dKi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ImageView" id="Qtq-r9-TQ2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lbj-GD-q3r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2297" y="790"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="n7c-PX-sTx">

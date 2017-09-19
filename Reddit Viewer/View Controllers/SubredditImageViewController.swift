@@ -24,8 +24,28 @@ class SubredditImageViewController: UIViewController {
         }
     }
     
+    @IBAction func unwindToSubView(segue: UIStoryboardSegue) {
+        
+    }
+    
     @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let indexPath = tableView.indexPathForSelectedRow {
+//            let selectedRow = indexPath.row
+//            let thumbnailView = segue.destination as! SubredditImageViewController
+//            guard let subName = subreddits[selectedRow].subredditName else { return }
+//            thumbnailView.subreddit = subName
+//        }
+        if segue.identifier == "toImageView" {
+            let cell = sender as! UICollectionViewCell
+            let indexPath = self.collectionView!.indexPath(for: cell)
+            let post = self.posts[(indexPath?.row)!]
+            let destVC = segue.destination as! SlideshowContentViewController
+            destVC.post = post
+        }
+    }
 }
 
 extension SubredditImageViewController: UICollectionViewDelegate {
