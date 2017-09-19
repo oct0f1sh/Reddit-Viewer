@@ -39,7 +39,7 @@ class CollectionViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = tableView.indexPathForSelectedRow {
-            let selectedRow = indexPath.section
+            let selectedRow = indexPath.row
             let thumbnailView = segue.destination as! SubredditImageViewController
             guard let subName = subreddits[selectedRow].subredditName else { return }
             thumbnailView.subreddit = subName

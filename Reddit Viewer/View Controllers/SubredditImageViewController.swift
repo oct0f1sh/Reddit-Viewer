@@ -30,6 +30,8 @@ extension SubredditImageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
     }
+    
+    
 }
 
 extension SubredditImageViewController: UICollectionViewDataSource {
@@ -43,5 +45,16 @@ extension SubredditImageViewController: UICollectionViewDataSource {
         }
         
         return cell
+    }
+    
+    
+}
+
+extension SubredditImageViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (self.view.frame.size.width - 10 * 4) / 3
+        let height = width
+        
+        return CGSize(width: width, height: height)
     }
 }
