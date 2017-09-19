@@ -15,6 +15,7 @@ struct Post {
     let description: String
     let author: String
     let postURL: String
+    let images: Images
     
     init(imageURL: URL, thumbURL: URL, postURL: String, title: String, description: String, author: String) {
         self.imageURL = imageURL
@@ -22,7 +23,8 @@ struct Post {
         self.title = title
         self.description = description
         self.author = author
-        self.postURL = postURL]
+        self.postURL = postURL
+        self.images = Images(fullImageURL: imageURL, thumbnailURL: thumbURL)
     }
 }
 

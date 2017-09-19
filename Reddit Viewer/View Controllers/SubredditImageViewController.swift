@@ -38,6 +38,9 @@ extension SubredditImageViewController: UICollectionViewDataSource {
         let post = posts[indexPath.row]
         cell.post = post
         
+        post.images.downloadThumbnail() { () in
+            cell.thumbnailImageView.image = post.images.thumbnail
+        }
         
         return cell
     }

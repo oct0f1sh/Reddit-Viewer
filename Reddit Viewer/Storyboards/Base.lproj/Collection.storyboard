@@ -110,8 +110,22 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qT7-G0-5iw">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="qT7-G0-5iw" secondAttribute="trailing" id="6MB-4r-IAt"/>
+                                            <constraint firstItem="qT7-G0-5iw" firstAttribute="leading" secondItem="ku9-12-Ukf" secondAttribute="leading" id="7f5-ex-eqC"/>
+                                            <constraint firstAttribute="bottom" secondItem="qT7-G0-5iw" secondAttribute="bottom" id="bA7-VA-vK2"/>
+                                            <constraint firstItem="qT7-G0-5iw" firstAttribute="top" secondItem="ku9-12-Ukf" secondAttribute="top" id="iJM-vw-TCU"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="thumbnailImageView" destination="qT7-G0-5iw" id="is6-Iy-2bz"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
