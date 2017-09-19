@@ -86,7 +86,7 @@
             </objects>
             <point key="canvasLocation" x="1357.5" y="173.2394366197183"/>
         </scene>
-        <!--Subreddit Image View Controller-->
+        <!--placeholder-->
         <scene sceneID="Nif-zY-e9n">
             <objects>
                 <viewController id="jIw-yv-LQB" customClass="SubredditImageViewController" customModule="Reddit_Viewer" customModuleProvider="target" sceneMemberID="viewController">
@@ -111,7 +111,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qT7-G0-5iw">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qT7-G0-5iw">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 </imageView>
                                             </subviews>
@@ -143,8 +143,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x5n-ab-TuR"/>
                     </view>
+                    <navigationItem key="navigationItem" title="placeholder" id="Q0B-SV-Vmo"/>
                     <connections>
                         <outlet property="collectionView" destination="ZJU-CE-BCS" id="1A4-oL-z4r"/>
+                        <outlet property="navigationBar" destination="Q0B-SV-Vmo" id="5B9-8l-uXj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EuW-CF-QiY" userLabel="First Responder" sceneMemberID="firstResponder"/>

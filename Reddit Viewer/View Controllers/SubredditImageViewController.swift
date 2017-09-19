@@ -17,12 +17,14 @@ class SubredditImageViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        self.navigationBar.title = subreddit
         ImageService.getPostsFromSubreddit(subreddit: subreddit) { (gatheredPosts) in
             self.posts = gatheredPosts
             self.collectionView.reloadData()
         }
     }
     
+    @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var collectionView: UICollectionView!
 }
 
