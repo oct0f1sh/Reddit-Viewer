@@ -4,11 +4,13 @@ PODS:
     - Alamofire (~> 4.5)
   - AlamofireNetworkActivityIndicator (2.2.0):
     - Alamofire (~> 4.5)
+  - ImageViewer (4.1.0)
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`)
   - AlamofireImage (from `https://github.com/Alamofire/AlamofireImage.git`)
   - AlamofireNetworkActivityIndicator (from `https://github.com/Alamofire/AlamofireNetworkActivityIndicator.git`)
+  - ImageViewer
 
 EXTERNAL SOURCES:
   Alamofire:
@@ -33,7 +35,8 @@ SPEC CHECKSUMS:
   Alamofire: 0224236301daac8c6578172706304b66b48236b5
   AlamofireImage: 4e0cba538743dc2e36cdb5eb5e057a722560769d
   AlamofireNetworkActivityIndicator: 1b37f625e82da75465fc624bf26cf37cabd99a42
+  ImageViewer: 163e5832e0a09e31a3e3482cce6e5e9029356174
 
-PODFILE CHECKSUM: 3ed2464e4b6e118d0989b8b58d5a2c0f4ab532fd
+PODFILE CHECKSUM: 5dcdfacf74e673698610d2f66f3e2d8ce138ebba
 
 COCOAPODS: 1.2.1

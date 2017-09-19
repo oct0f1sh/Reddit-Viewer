@@ -54,7 +54,7 @@ extension SubredditImageViewController: UICollectionViewDataSource {
 
 extension SubredditImageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (self.view.frame.size.width - 10 * 4) / 3
+        let width = (self.view.frame.size.width - 20) / 3
         let height = width
         
         return CGSize(width: width, height: height)
