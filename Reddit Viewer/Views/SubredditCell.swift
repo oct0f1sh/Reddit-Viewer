@@ -15,7 +15,7 @@ class SubredditCell: UITableViewCell {
         print("button tapped")
         
         ImageService.getPostsFromSubreddit(subreddit: subredditLabel.text!) { (posts) in
-            print(posts)
+            
         }
     }
 }

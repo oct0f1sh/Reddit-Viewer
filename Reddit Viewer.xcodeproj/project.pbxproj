@@ -22,6 +22,7 @@
 		AEFBBB5F1F70504B0069CB8E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFBBB5E1F70504B0069CB8E /* Post.swift */; };
 		AEFBBB611F707E060069CB8E /* ThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFBBB601F707E060069CB8E /* ThumbnailCell.swift */; };
 		AEFBBB631F707E560069CB8E /* SubredditImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFBBB621F707E560069CB8E /* SubredditImageViewController.swift */; };
+		AEFBBB671F709ACC0069CB8E /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFBBB661F709ACC0069CB8E /* Images.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		AEFBBB5E1F70504B0069CB8E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		AEFBBB601F707E060069CB8E /* ThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCell.swift; sourceTree = "<group>"; };
 		AEFBBB621F707E560069CB8E /* SubredditImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubredditImageViewController.swift; sourceTree = "<group>"; };
+		AEFBBB661F709ACC0069CB8E /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		B3F29060A5A60513D0C5FC2D /* Pods_Reddit_Viewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reddit_Viewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				AEFBBB5E1F70504B0069CB8E /* Post.swift */,
+				AEFBBB661F709ACC0069CB8E /* Images.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEFBBB611F707E060069CB8E /* ThumbnailCell.swift in Sources */,
+				AEFBBB671F709ACC0069CB8E /* Images.swift in Sources */,
 				AE9EE67B1F6E23DC006DBDCA /* UITableView+Cell.swift in Sources */,
 				AEF9663F1F6E16A2004722F4 /* CollectionViewController.swift in Sources */,
 				AEF9663D1F6E16A2004722F4 /* AppDelegate.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Post {
     let imageURL: URL
@@ -21,7 +22,7 @@ struct Post {
         self.title = title
         self.description = description
         self.author = author
-        self.postURL = postURL
+        self.postURL = postURL]
     }
 }
 
@@ -57,21 +58,13 @@ extension Post: Decodable {
     }
     
     init(from decoder: Decoder) throws {
-        print("init started")
-        
         let container = try decoder.container(keyedBy: Keys.self)
         
-        print("container: \(container)")
-        
         let dataContainer = try container.nestedContainer(keyedBy: AttributeKeys.self, forKey: .data)
-        print("data: \(dataContainer)")
         let imagesContainer = try dataContainer.nestedContainer(keyedBy: ImagesKeys.self, forKey: .preview)
-        print("images: \(imagesContainer)")
         var imageContainer = try imagesContainer.nestedUnkeyedContainer(forKey: .images)
         let imageSizesContainer = try imageContainer.nestedContainer(keyedBy: ImageSizes.self)
-        print("imagesizes: \(imageSizesContainer)")
         let sourceContainer = try imageSizesContainer.nestedContainer(keyedBy: SourceImageKeys.self, forKey: .source)
-        print("source: \(sourceContainer)")
         
         let title = try dataContainer.decode(String.self, forKey: .title)
         let description = try dataContainer.decode(String.self, forKey: .selftext)
@@ -79,7 +72,6 @@ extension Post: Decodable {
         let thumbURL = try dataContainer.decode(URL.self, forKey: .thumbnail)
         let postURL = try dataContainer.decode(String.self, forKey: .permalink)
         let imageURL = try sourceContainer.decode(URL.self, forKey: .url)
-        print(imageURL)
         
         self.init(imageURL: imageURL, thumbURL: thumbURL, postURL: postURL, title: title, description: description, author: author)
     }

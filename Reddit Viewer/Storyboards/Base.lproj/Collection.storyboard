@@ -52,7 +52,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="subredditLabel" destination="zjR-Hc-Fd0" id="9Lz-VK-fJi"/>
-                                            <segue destination="jIw-yv-LQB" kind="show" id="cIi-NJ-7ja"/>
+                                            <segue destination="jIw-yv-LQB" kind="show" identifier="viewSubreddit" id="cIi-NJ-7ja"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -111,8 +111,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
+                                        <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="jIw-yv-LQB" id="FRi-ts-cnQ"/>
+                                    <outlet property="delegate" destination="jIw-yv-LQB" id="RUs-UB-Kcd"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -124,6 +129,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x5n-ab-TuR"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="ZJU-CE-BCS" id="1A4-oL-z4r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EuW-CF-QiY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
