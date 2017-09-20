@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double OptikVersionNumber;
-FOUNDATION_EXPORT const unsigned char OptikVersionString[];
+FOUNDATION_EXPORT double ImageViewerVersionNumber;
+FOUNDATION_EXPORT const unsigned char ImageViewerVersionString[];
 

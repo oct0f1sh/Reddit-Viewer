@@ -1,3 +1,21 @@
-PODFILE CHECKSUM: 4f275987288ea0702757cf7e9712fbf76e807bca
+PODS:
+  - ImageViewer (4.1.0)
+
+DEPENDENCIES:
+  - ImageViewer (from `https://github.com/leviouss/ImageViewer.git`)
+
+EXTERNAL SOURCES:
+  ImageViewer:
+    :git: https://github.com/leviouss/ImageViewer.git
+
+CHECKOUT OPTIONS:
+  ImageViewer:
+    :commit: 60a8f8eea30e27573f1c542f2b0287321c091edd
+    :git: https://github.com/leviouss/ImageViewer.git
+
+SPEC CHECKSUMS:
+  ImageViewer: 1b1fd505659cb88d9358d76accb1d58a6d8f073d
+
+PODFILE CHECKSUM: 13ff53132334d4f86ab15deef22cd277b3923f13
 
 COCOAPODS: 1.2.1
