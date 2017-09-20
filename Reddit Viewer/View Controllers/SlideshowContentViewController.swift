@@ -22,6 +22,8 @@ class SlideshowContentViewController: UIViewController {
         print("view loaded")
     }
     
+    //commit!
+    
     @IBAction func exitButtonTapped(_ sender: Any) {
         print("exit button tapped")
     }
