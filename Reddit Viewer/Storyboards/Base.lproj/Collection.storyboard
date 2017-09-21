@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collection View Controller-->
+        <!--Subreddits-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CollectionViewController" customModule="Reddit_Viewer" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,14 +35,6 @@
                                                     <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sUL-C3-dj5">
-                                                    <rect key="frame" x="214" y="4" width="46" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <connections>
-                                                        <action selector="buttonTapped:" destination="er0-J3-ZIc" eventType="touchUpInside" id="HHQ-81-H4e"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zjR-Hc-Fd0" secondAttribute="trailing" id="eny-tG-ohK"/>
@@ -71,7 +63,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Oxb-D4-ZSc">
+                    <navigationItem key="navigationItem" title="Subreddits" id="Oxb-D4-ZSc">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vbd-d6-cYY">
                             <connections>
                                 <action selector="addSubredditTapped:" destination="BYZ-38-t0r" id="wTG-Ua-vLk"/>

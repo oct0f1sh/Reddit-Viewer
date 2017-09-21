@@ -36,12 +36,6 @@ class ImageService {
         }
         task.resume()
 
-        for i in posts {
-            if i.imageURL == URL(string: "") {
-                print("%%%%%%%%%%%%%%%%%%%%%")
-            }
-        }
-
         dg.notify(queue: .main, execute: {
             completion(posts)
         })

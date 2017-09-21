@@ -66,4 +66,14 @@ extension CollectionViewController: UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let subreddit = subreddits[indexPath.row]
+            CoreDataHelper.deleteSubreddit(subreddit: subreddit)
+            self.subreddits.remove(at: indexPath.row)
+            self.tableView.reloadData()
+            print("subreddit deleted")
+        }
+    }
 }

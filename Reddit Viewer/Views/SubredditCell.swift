@@ -10,12 +10,4 @@ import UIKit
 
 class SubredditCell: UITableViewCell {
     @IBOutlet weak var subredditLabel: UILabel!
-    
-    @IBAction func buttonTapped(_ sender: Any) {
-        print("button tapped")
-        
-        ImageService.getPostsFromSubreddit(subreddit: subredditLabel.text!) { (posts) in
-            
-        }
-    }
 }

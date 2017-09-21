@@ -19,8 +19,6 @@ class CoreDataHelper {
         return subreddit
     }
     
-    // I'm putting this in so I can commit
-    
     static func saveSubreddit() {
         do {
             try managedContext.save()
@@ -29,7 +27,7 @@ class CoreDataHelper {
         }
     }
     
-    static func deleteNote(subreddit: Subreddit) {
+    static func deleteSubreddit(subreddit: Subreddit) {
         managedContext.delete(subreddit)
         saveSubreddit()
     }

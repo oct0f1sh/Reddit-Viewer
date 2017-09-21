@@ -32,12 +32,6 @@ class SubredditImageViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let indexPath = tableView.indexPathForSelectedRow {
-//            let selectedRow = indexPath.row
-//            let thumbnailView = segue.destination as! SubredditImageViewController
-//            guard let subName = subreddits[selectedRow].subredditName else { return }
-//            thumbnailView.subreddit = subName
-//        }
         if segue.identifier == "toImageView" {
             let cell = sender as! UICollectionViewCell
             let indexPath = self.collectionView!.indexPath(for: cell)
@@ -52,7 +46,6 @@ extension SubredditImageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
     }
-    
     
 }
 
