@@ -50,33 +50,36 @@ extension Post: Decodable {
         let dataContainer = try container.nestedContainer(keyedBy: AttributeKeys.self, forKey: .data)
         dh.printContainer(container: dataContainer, forContainer: .data)
         
-        
-        let imagesContainer = try dataContainer.nestedContainer(keyedBy: ImagesKeys.self, forKey: .preview)
-        dh.printContainer(container: imagesContainer, forContainer: .images)
-        
-        var imageContainer = try imagesContainer.nestedUnkeyedContainer(forKey: .images)
-        dh.printContainer(container: imageContainer, forContainer: .image)
-        
-        let imageSizesContainer = try imageContainer.nestedContainer(keyedBy: ImageSizes.self)
-        dh.printContainer(container: imageSizesContainer, forContainer: .imageSizes)
-        
-        let sourceContainer = try imageSizesContainer.nestedContainer(keyedBy: SourceImageKeys.self, forKey: .source)
-        dh.printContainer(container: sourceContainer, forContainer: .source)
-        
-        let title = try dataContainer.decode(String.self, forKey: .title)
-        dh.printAttribute(attribute: title, forAttr: .title)
-        let description = try dataContainer.decode(String.self, forKey: .selftext)
-        dh.printAttribute(attribute: description, forAttr: .description)
-        let author = try dataContainer.decode(String.self, forKey: .author)
-        dh.printAttribute(attribute: author, forAttr: .author)
-        let thumbURL = try dataContainer.decode(URL.self, forKey: .thumbnail)
-        dh.printAttribute(attribute: thumbURL, forAttr: .thumbURL)
-        let postURL = try dataContainer.decode(String.self, forKey: .permalink)
-        dh.printAttribute(attribute: postURL, forAttr: .postURL)
-        let imageURL = try sourceContainer.decode(URL.self, forKey: .url)
-        dh.printAttribute(attribute: imageURL, forAttr: .imageURL)
-        
-        self.init(imageURL: imageURL, thumbURL: thumbURL, postURL: postURL, title: title, description: description, author: author)
+        let imagesContainer = try? dataContainer.nestedContainer(keyedBy: ImagesKeys.self, forKey: .preview)
+        if let _ = imagesContainer {
+            dh.printContainer(container: imagesContainer, forContainer: .images)
+            
+            var imageContainer = try imagesContainer!.nestedUnkeyedContainer(forKey: .images)
+            dh.printContainer(container: imageContainer, forContainer: .image)
+            
+            let imageSizesContainer = try imageContainer.nestedContainer(keyedBy: ImageSizes.self)
+            dh.printContainer(container: imageSizesContainer, forContainer: .imageSizes)
+            
+            let sourceContainer = try imageSizesContainer.nestedContainer(keyedBy: SourceImageKeys.self, forKey: .source)
+            dh.printContainer(container: sourceContainer, forContainer: .source)
+            
+            let title = try dataContainer.decode(String.self, forKey: .title)
+            dh.printAttribute(attribute: title, forAttr: .title)
+            let description = try dataContainer.decode(String.self, forKey: .selftext)
+            dh.printAttribute(attribute: description, forAttr: .description)
+            let author = try dataContainer.decode(String.self, forKey: .author)
+            dh.printAttribute(attribute: author, forAttr: .author)
+            let thumbURL = try dataContainer.decode(URL.self, forKey: .thumbnail)
+            dh.printAttribute(attribute: thumbURL, forAttr: .thumbURL)
+            let postURL = try dataContainer.decode(String.self, forKey: .permalink)
+            dh.printAttribute(attribute: postURL, forAttr: .postURL)
+            let imageURL = try sourceContainer.decode(URL.self, forKey: .url)
+            dh.printAttribute(attribute: imageURL, forAttr: .imageURL)
+            
+            self.init(imageURL: imageURL, thumbURL: thumbURL, postURL: postURL, title: title, description: description, author: author)
+        } else {
+            self.init()
+        }
     }
 }
 

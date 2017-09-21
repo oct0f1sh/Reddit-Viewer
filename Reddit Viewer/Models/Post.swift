@@ -26,4 +26,14 @@ struct Post {
         self.postURL = postURL
         self.images = Images(fullImageURL: imageURL, thumbnailURL: thumbURL)
     }
+    
+    init() {
+        self.imageURL = URL(string: "imageURL")!
+        self.thumbURL = URL(string: "thumbURL")!
+        self.title = "notitle"
+        self.description = "description"
+        self.author = "author"
+        self.postURL = "postURL"
+        self.images = Images(fullImageURL: imageURL, thumbnailURL: thumbURL)
+    }
 }

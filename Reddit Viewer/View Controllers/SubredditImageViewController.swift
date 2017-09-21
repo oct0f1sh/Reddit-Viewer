@@ -12,6 +12,7 @@ class SubredditImageViewController: UIViewController {
     var subreddit: String!
     var posts: [Post] = [] {
         didSet {
+            posts = PostHelper.cleanPosts(posts: posts)
             self.collectionView.reloadData()
         }
     }
