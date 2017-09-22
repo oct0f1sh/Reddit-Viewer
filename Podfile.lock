@@ -1,21 +1,24 @@
 PODS:
-  - ImageViewer (4.1.0)
+  - Hue (2.0.1)
+  - Lightbox (1.0.0):
+    - Hue
 
 DEPENDENCIES:
-  - ImageViewer (from `https://github.com/leviouss/ImageViewer.git`)
+  - Lightbox (from `https://github.com/mhassanpur/Lightbox`)
 
 EXTERNAL SOURCES:
-  ImageViewer:
-    :git: https://github.com/leviouss/ImageViewer.git
+  Lightbox:
+    :git: https://github.com/mhassanpur/Lightbox
 
 CHECKOUT OPTIONS:
-  ImageViewer:
-    :commit: 60a8f8eea30e27573f1c542f2b0287321c091edd
-    :git: https://github.com/leviouss/ImageViewer.git
+  Lightbox:
+    :commit: b5d86f1f7963c3b1ce7ad459e80462bd0321bb2c
+    :git: https://github.com/mhassanpur/Lightbox
 
 SPEC CHECKSUMS:
-  ImageViewer: 1b1fd505659cb88d9358d76accb1d58a6d8f073d
+  Hue: 354caec055fdc9d38b5ef33ca2e7224721843baf
+  Lightbox: a7edccb98c1a84a4b089a44dbaf2b39a409fbfcb
 
-PODFILE CHECKSUM: 13ff53132334d4f86ab15deef22cd277b3923f13
+PODFILE CHECKSUM: 2b9047dbbf5f79b6aaeaf9ab36e1b95fcc0894b9
 
 COCOAPODS: 1.2.1

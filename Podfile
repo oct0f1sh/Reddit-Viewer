@@ -6,6 +6,6 @@ target 'Reddit Viewer' do
   use_frameworks!
 
   # Pods for Reddit Viewer
-  pod 'ImageViewer', :git=> 'https://github.com/leviouss/ImageViewer.git'
+  pod 'Lightbox', :git=> 'https://github.com/mhassanpur/Lightbox'
 
 end

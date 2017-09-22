@@ -40,7 +40,7 @@ extension Post: Decodable {
     
     init(from decoder: Decoder) throws {
         //Change this to true to print container data for debugging purposes
-        let dh = DebugHelper(shouldPrint: true)
+        let dh = DebugHelper(shouldPrint: false)
         
         
         let container = try decoder.container(keyedBy: Keys.self)

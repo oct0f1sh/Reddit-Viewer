@@ -117,7 +117,6 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="thumbnailImageView" destination="qT7-G0-5iw" id="is6-Iy-2bz"/>
-                                            <segue destination="Qtq-r9-TQ2" kind="show" identifier="toImageView" id="ivy-dD-OUw"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

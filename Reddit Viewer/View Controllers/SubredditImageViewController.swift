@@ -7,9 +7,11 @@
 
 import Foundation
 import UIKit
+import Lightbox
 
 class SubredditImageViewController: UIViewController {
     var subreddit: String!
+    
     var posts: [Post] = [] {
         didSet {
             posts = PostHelper.cleanPosts(posts: posts)
@@ -48,6 +50,19 @@ extension SubredditImageViewController: UICollectionViewDelegate {
         return posts.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var imgs: [LightboxImage] = []
+        
+        for i in 0...4 {
+            let post = posts[indexPath.row + i]
+            let img = LightboxImage(imageURL: post.imageURL)
+            imgs.append(img)
+        }
+        
+        let controller = LightboxController(images: imgs, startIndex: 0)
+        
+        present(controller, animated: true, completion: nil)
+    }
 }
 
 extension SubredditImageViewController: UICollectionViewDataSource {
