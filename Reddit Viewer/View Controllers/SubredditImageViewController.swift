@@ -11,10 +11,14 @@ import Lightbox
 
 class SubredditImageViewController: UIViewController {
     var subreddit: String!
+    var images: [LightboxImage] = []
     
     var posts: [Post] = [] {
         didSet {
             posts = PostHelper.cleanPosts(posts: posts)
+            images = posts.map {
+                LightboxImage(imageURL: $0.imageURL, text: $0.title)
+            }
             self.collectionView.reloadData()
         }
     }
@@ -51,15 +55,9 @@ extension SubredditImageViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var imgs: [LightboxImage] = []
         
-        for i in 0...4 {
-            let post = posts[indexPath.row + i]
-            let img = LightboxImage(imageURL: post.imageURL)
-            imgs.append(img)
-        }
-        
-        let controller = LightboxController(images: imgs, startIndex: 0)
+        let controller = LightboxController(images: images, startIndex: indexPath.row)
+        controller.dynamicBackground = true
         
         present(controller, animated: true, completion: nil)
     }
