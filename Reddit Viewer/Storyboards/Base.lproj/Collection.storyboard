@@ -145,14 +145,6 @@
             </objects>
             <point key="canvasLocation" x="2297" y="174"/>
         </scene>
-        <!--ImageView-->
-        <scene sceneID="SeM-Wq-dKi">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ImageView" id="Qtq-r9-TQ2" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lbj-GD-q3r" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2297" y="790"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="n7c-PX-sTx">
             <objects>

@@ -86,6 +86,7 @@ extension Post: Decodable {
 struct PostResults: Decodable {
     struct PostData: Decodable {
         let children: [Post]
+        let after: String
     }
     
     let data: PostData

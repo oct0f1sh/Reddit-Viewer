@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 class ImageService {
-    static func getPostsFromSubreddit(subreddit: String, completion: @escaping ([Post]) -> Void) {
-        let url = URL(string: "https://reddit.com/r/\(subreddit)/.json")!
+    static func getPostsFromSubreddit(subreddit: String, after: String, completion: @escaping ([Post], String?) -> Void) {
+        let url = URL(string: "https://reddit.com/r/\(subreddit)/.json?after=\(after)")!
 
         let dg = DispatchGroup()
 
@@ -37,8 +37,28 @@ class ImageService {
         task.resume()
 
         dg.notify(queue: .main, execute: {
-            completion(posts)
+            completion(posts, nil)
         })
+    }
+    
+    static func getMultiplePagesFromSubreddit(subreddit: String, completion: @escaping ([Post]) -> Void) {
+        var posts: [Post] = []
+        var after: String = "null"
+        
+        let dg = DispatchGroup()
+        
+        for _ in 1...5 {
+            dg.enter()
+            getPostsFromSubreddit(subreddit: subreddit, after: after, completion: { (psts, aftr) in
+                posts.append(contentsOf: psts)
+                after = aftr!
+                dg.leave()
+            })
+        }
+        
+        dg.notify(queue: .main) {
+            completion(PostHelper.cleanPosts(posts: posts))
+        }
     }
 
     static func loadImage(imageURL: URL!, completion: @escaping (UIImage?) -> Void) {

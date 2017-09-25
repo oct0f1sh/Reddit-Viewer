@@ -15,7 +15,6 @@ class SubredditImageViewController: UIViewController {
     
     var posts: [Post] = [] {
         didSet {
-            posts = PostHelper.cleanPosts(posts: posts)
             images = posts.map {
                 LightboxImage(imageURL: $0.imageURL, text: $0.title)
             }
@@ -25,7 +24,7 @@ class SubredditImageViewController: UIViewController {
     
     override func viewDidLoad() {
         self.navigationBar.title = subreddit
-        ImageService.getPostsFromSubreddit(subreddit: subreddit) { (gatheredPosts) in
+        ImageService.getMultiplePagesFromSubreddit(subreddit: subreddit) { (gatheredPosts) in
             self.posts = gatheredPosts
             self.collectionView.reloadData()
         }
