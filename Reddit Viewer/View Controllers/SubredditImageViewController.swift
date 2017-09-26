@@ -24,10 +24,19 @@ class SubredditImageViewController: UIViewController {
     
     override func viewDidLoad() {
         self.navigationBar.title = subreddit
-        ImageService.getMultiplePagesFromSubreddit(subreddit: subreddit) { (gatheredPosts) in
-            self.posts = gatheredPosts
+//        ImageService.getMultiplePagesFromSubreddit(subreddit: subreddit) { (gatheredPosts) in
+//            self.posts = gatheredPosts
+//            self.collectionView.reloadData()
+//        }
+        let subService = SubredditService(subreddit: subreddit)
+        subService.getSomePosts {
+            self.posts = subService.posts
             self.collectionView.reloadData()
         }
+    }
+    
+    @IBAction func reloadCV(_ sender: Any) {
+        self.collectionView.reloadData()
     }
     
     @IBAction func unwindToSubView(segue: UIStoryboardSegue) {

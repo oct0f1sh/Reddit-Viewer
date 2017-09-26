@@ -11,6 +11,8 @@ import UIKit
 class ImageService {
     static func getPostsFromSubreddit(subreddit: String, after: String, completion: @escaping ([Post], String?) -> Void) {
         let url = URL(string: "https://reddit.com/r/\(subreddit)/.json?after=\(after)")!
+        
+        print(url)
 
         let dg = DispatchGroup()
 
@@ -20,6 +22,7 @@ class ImageService {
         let session = URLSession.shared
 
         var posts = [Post]()
+        var nextAfter: String = ""
 
         dg.enter()
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -28,6 +31,7 @@ class ImageService {
             if let data = data {
                 let postList = try? JSONDecoder().decode(PostResults.self, from: data)
                 guard let newPosts = postList?.data.children else { return }
+                nextAfter = (postList?.data.after)!
                 posts = newPosts
                 dg.leave()
             } else {
@@ -37,7 +41,7 @@ class ImageService {
         task.resume()
 
         dg.notify(queue: .main, execute: {
-            completion(posts, nil)
+            completion(posts, nextAfter)
         })
     }
     
@@ -49,6 +53,7 @@ class ImageService {
         
         for _ in 1...5 {
             dg.enter()
+            print(after)
             getPostsFromSubreddit(subreddit: subreddit, after: after, completion: { (psts, aftr) in
                 posts.append(contentsOf: psts)
                 after = aftr!

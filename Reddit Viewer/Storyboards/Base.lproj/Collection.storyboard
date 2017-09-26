@@ -135,7 +135,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x5n-ab-TuR"/>
                     </view>
-                    <navigationItem key="navigationItem" title="placeholder" id="Q0B-SV-Vmo"/>
+                    <navigationItem key="navigationItem" title="placeholder" id="Q0B-SV-Vmo">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="uGw-EI-MUW">
+                            <connections>
+                                <action selector="reloadCV:" destination="jIw-yv-LQB" id="F3N-2s-Ppu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="ZJU-CE-BCS" id="1A4-oL-z4r"/>
                         <outlet property="navigationBar" destination="Q0B-SV-Vmo" id="5B9-8l-uXj"/>
