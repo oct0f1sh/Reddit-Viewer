@@ -51,11 +51,11 @@ open class LightboxConfig {
   public struct CloseButton {
     public static var enabled = true
     public static var size: CGSize?
-    public static var text = NSLocalizedString("Close", comment: "")
+    public static var text = NSLocalizedString("X", comment: "")
     public static var image: UIImage?
 
     public static var textAttributes = [
-      NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16),
+      NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 24),
       NSAttributedStringKey.foregroundColor: UIColor.white,
       NSAttributedStringKey.paragraphStyle: {
         var style = NSMutableParagraphStyle()

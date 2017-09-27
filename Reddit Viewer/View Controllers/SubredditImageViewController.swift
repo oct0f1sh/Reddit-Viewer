@@ -12,6 +12,7 @@ import Lightbox
 class SubredditImageViewController: UIViewController {
     var subreddit: String!
     var images: [LightboxImage] = []
+    var subService: SubredditService!
     
     var posts: [Post] = [] {
         didSet {
@@ -24,13 +25,14 @@ class SubredditImageViewController: UIViewController {
     
     override func viewDidLoad() {
         self.navigationBar.title = subreddit
-//        ImageService.getMultiplePagesFromSubreddit(subreddit: subreddit) { (gatheredPosts) in
-//            self.posts = gatheredPosts
-//            self.collectionView.reloadData()
-//        }
-        let subService = SubredditService(subreddit: subreddit)
+        self.subService = SubredditService(subreddit: subreddit)
+        
+        self.getMorePosts()
+    }
+    
+    func getMorePosts() {
         subService.getSomePosts {
-            self.posts = subService.posts
+            self.posts = self.subService.posts
             self.collectionView.reloadData()
         }
     }
@@ -57,6 +59,12 @@ class SubredditImageViewController: UIViewController {
     }
 }
 
+extension SubredditImageViewController: LightboxControllerPageDelegate {
+    func lightboxController(_ controller: LightboxController, didMoveToPage page: Int) {
+        print(page)
+    }
+}
+
 extension SubredditImageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
@@ -66,6 +74,10 @@ extension SubredditImageViewController: UICollectionViewDelegate {
         
         let controller = LightboxController(images: images, startIndex: indexPath.row)
         controller.dynamicBackground = true
+        
+        controller.pageDelegate = self
+        
+        print(posts[indexPath.row].description)
         
         present(controller, animated: true, completion: nil)
     }
@@ -77,14 +89,22 @@ extension SubredditImageViewController: UICollectionViewDataSource {
         let post = posts[indexPath.row]
         cell.post = post
         
-        post.images.downloadThumbnail() { () in
-            cell.thumbnailImageView.image = post.images.thumbnail
+        if let img = post.images.thumbnail {
+            cell.thumbnailImageView.image = img
+        } else {
+            cell.downloadImage(completion: {
+                self.collectionView.reloadItems(at: [indexPath])
+            })
         }
         
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row >= posts.count - 1 {
+            self.getMorePosts()
+        }
+    }
 }
 
 extension SubredditImageViewController: UICollectionViewDelegateFlowLayout {

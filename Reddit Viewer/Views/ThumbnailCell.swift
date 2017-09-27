@@ -10,6 +10,24 @@ import UIKit
 
 class ThumbnailCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     
     var post: Post!
+    
+    override func awakeFromNib() {
+        self.activityView.isHidden = true
+    }
+    
+    func stopLoading() {
+        self.activityView.stopAnimating()
+        self.activityView.isHidden = true
+    }
+    
+    func downloadImage(completion: @escaping () -> Void) {
+        post.images.downloadThumbnail {
+            self.thumbnailImageView.image = self.post.images.thumbnail
+            self.stopLoading()
+            completion()
+        }
+    }
 }

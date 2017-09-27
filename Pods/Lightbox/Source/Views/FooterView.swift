@@ -20,7 +20,8 @@ open class FooterView: UIView {
 
   open fileprivate(set) lazy var pageLabel: UILabel = { [unowned self] in
     let label = UILabel(frame: CGRect.zero)
-    label.isHidden = !LightboxConfig.PageIndicator.enabled
+    //label.isHidden = !LightboxConfig.PageIndicator.enabled
+    label.isHidden = true
     label.numberOfLines = 1
 
     return label
@@ -28,7 +29,8 @@ open class FooterView: UIView {
 
   open fileprivate(set) lazy var separatorView: UIView = { [unowned self] in
     let view = UILabel(frame: CGRect.zero)
-    view.isHidden = !LightboxConfig.PageIndicator.enabled
+    //view.isHidden = !LightboxConfig.PageIndicator.enabled
+    view.isHidden = true
     view.backgroundColor = LightboxConfig.PageIndicator.separatorColor
 
     return view

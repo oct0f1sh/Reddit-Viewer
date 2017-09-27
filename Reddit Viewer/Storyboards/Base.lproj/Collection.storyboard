@@ -88,7 +88,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZJU-CE-BCS">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="z65-Uy-fj3">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -106,16 +106,22 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qT7-G0-5iw">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="22e-8Y-K5v">
+                                                    <rect key="frame" x="7" y="7" width="37" height="37"/>
+                                                    <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="qT7-G0-5iw" secondAttribute="trailing" id="6MB-4r-IAt"/>
                                             <constraint firstItem="qT7-G0-5iw" firstAttribute="leading" secondItem="ku9-12-Ukf" secondAttribute="leading" id="7f5-ex-eqC"/>
+                                            <constraint firstItem="22e-8Y-K5v" firstAttribute="centerX" secondItem="ku9-12-Ukf" secondAttribute="centerX" id="Icy-GJ-fUm"/>
                                             <constraint firstAttribute="bottom" secondItem="qT7-G0-5iw" secondAttribute="bottom" id="bA7-VA-vK2"/>
+                                            <constraint firstItem="22e-8Y-K5v" firstAttribute="centerY" secondItem="ku9-12-Ukf" secondAttribute="centerY" id="fCZ-7K-w7h"/>
                                             <constraint firstItem="qT7-G0-5iw" firstAttribute="top" secondItem="ku9-12-Ukf" secondAttribute="top" id="iJM-vw-TCU"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="activityView" destination="22e-8Y-K5v" id="clb-le-IcD"/>
                                             <outlet property="thumbnailImageView" destination="qT7-G0-5iw" id="is6-Iy-2bz"/>
                                         </connections>
                                     </collectionViewCell>
@@ -149,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EuW-CF-QiY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2297" y="174"/>
+            <point key="canvasLocation" x="2296.875" y="173.2394366197183"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="n7c-PX-sTx">
@@ -168,6 +174,13 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOQ-pr-M4w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="489.60000000000002" y="174.51274362818592"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="ckF-wB-OTO">
+            <objects>
+                <viewControllerPlaceholder id="gAq-75-34D" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XwP-TP-rE3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
 </document>
