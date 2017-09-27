@@ -11,12 +11,13 @@ import Lightbox
 
 class SubredditImageViewController: UIViewController {
     var subreddit: String!
-    var images: [LightboxImage] = []
+    var allImages: [LightboxImage] = []
+    var surroundingImages: [LightboxImage?]
     var subService: SubredditService!
     
     var posts: [Post] = [] {
         didSet {
-            images = posts.map {
+            allImages = posts.map {
                 LightboxImage(imageURL: $0.imageURL, text: $0.title)
             }
             self.collectionView.reloadData()
@@ -71,13 +72,32 @@ extension SubredditImageViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //populate array of previous and next 5 values in images
+        print("initial index: \(indexPath)")
+        for i in 0...allImages.count {
+            if i > indexPath.row - 6 && i <= indexPath.row {
+                guard let _ = self.surroundingImages else { self.surroundingImages = [self.allImages[i]]; continue }
+                let containsElement = self.surroundingImages.contains { $0.image == self.allImages[i].image }
+                if containsElement {
+                    print("image exists")
+                    continue
+                } else {
+                    print("bound: \(i)")
+                    self.surroundingImages.append(self.allImages[i])
+                }
+            } else if i > indexPath.row && i < indexPath.row + 6 {
+                print("bound: \(i)")
+                self.surroundingImages.append(self.allImages[0])
+            }
+        }
         
-        let controller = LightboxController(images: images, startIndex: indexPath.row)
+        let indx = self.surroundingImages.count / 2
+        print(indx)
+        
+        let controller = LightboxController(images: surroundingImages, startIndex: indx)
         controller.dynamicBackground = true
         
         controller.pageDelegate = self
-        
-        print(posts[indexPath.row].description)
         
         present(controller, animated: true, completion: nil)
     }
