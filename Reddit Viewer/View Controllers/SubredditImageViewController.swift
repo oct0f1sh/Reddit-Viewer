@@ -12,7 +12,11 @@ import Lightbox
 class SubredditImageViewController: UIViewController {
     var subreddit: String!
     var allImages: [LightboxImage] = []
-    var surroundingImages: [LightboxImage?]
+    var surroundingImages: [(Int, LightboxImage)]! {
+        didSet {
+            surroundingImages = surroundingImages.sorted { $0.0 < $1.0 }
+        }
+    }
     var subService: SubredditService!
     
     var posts: [Post] = [] {
@@ -62,7 +66,7 @@ class SubredditImageViewController: UIViewController {
 
 extension SubredditImageViewController: LightboxControllerPageDelegate {
     func lightboxController(_ controller: LightboxController, didMoveToPage page: Int) {
-        print(page)
+        collectionView.selectItem(at: IndexPath(item: page, section: 0), animated: true, scrollPosition: UICollectionViewScrollPosition.centeredVertically)
     }
 }
 
@@ -72,29 +76,51 @@ extension SubredditImageViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //populate array of previous and next 5 values in images
-        print("initial index: \(indexPath)")
-        for i in 0...allImages.count {
-            if i > indexPath.row - 6 && i <= indexPath.row {
-                guard let _ = self.surroundingImages else { self.surroundingImages = [self.allImages[i]]; continue }
-                let containsElement = self.surroundingImages.contains { $0.image == self.allImages[i].image }
-                if containsElement {
-                    print("image exists")
+        
+        let bounds = 3
+        var lowerBound = indexPath.row - bounds
+        var higherBound = indexPath.row + bounds
+        
+        if indexPath.row - bounds < 0 {
+            lowerBound = 0
+        }
+        
+        if indexPath.row + bounds > self.allImages.count {
+            higherBound = self.allImages.count
+        }
+        
+        let surImgsSlice = ArraySlice<LightboxImage>(allImages[lowerBound...higherBound])
+        let surImgsArray = Array(surImgsSlice)
+        
+        for i in 0...surImgsSlice.count - 1 {
+            let lbImg: LightboxImage = surImgsArray[i]
+            let tuple: (Int, LightboxImage) = (lowerBound + i, lbImg)
+            if let _ = self.surroundingImages {
+                if self.surroundingImages.contains( where: { $0.0 == tuple.0 } ) {
+                    print("exists")
                     continue
                 } else {
-                    print("bound: \(i)")
-                    self.surroundingImages.append(self.allImages[i])
+                    self.surroundingImages.append(tuple)
                 }
-            } else if i > indexPath.row && i < indexPath.row + 6 {
-                print("bound: \(i)")
-                self.surroundingImages.append(self.allImages[0])
+            } else {
+                self.surroundingImages = [tuple]
             }
         }
         
-        let indx = self.surroundingImages.count / 2
+        var indx: Int = 0
+        for i in self.surroundingImages {
+            print("indexpath: \(indexPath.row) and i: \(i.0)")
+            if i.0 == indexPath.row {
+                break
+            } else {
+                indx += 1
+            }
+        }
+        
+        let imgArr = surroundingImages.map { $0.1 }
         print(indx)
         
-        let controller = LightboxController(images: surroundingImages, startIndex: indx)
+        let controller = LightboxController(images: imgArr, startIndex: indx)
         controller.dynamicBackground = true
         
         controller.pageDelegate = self
