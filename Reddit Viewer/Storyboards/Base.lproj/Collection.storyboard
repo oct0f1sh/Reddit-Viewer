@@ -127,7 +127,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="jIw-yv-LQB" id="FRi-ts-cnQ"/>
+                                    <outlet property="dataSource" destination="jIw-yv-LQB" id="tzR-w0-370"/>
                                     <outlet property="delegate" destination="jIw-yv-LQB" id="RUs-UB-Kcd"/>
                                 </connections>
                             </collectionView>
@@ -141,13 +141,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x5n-ab-TuR"/>
                     </view>
-                    <navigationItem key="navigationItem" title="placeholder" id="Q0B-SV-Vmo">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="uGw-EI-MUW">
-                            <connections>
-                                <action selector="reloadCV:" destination="jIw-yv-LQB" id="F3N-2s-Ppu"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="placeholder" id="Q0B-SV-Vmo"/>
                     <connections>
                         <outlet property="collectionView" destination="ZJU-CE-BCS" id="1A4-oL-z4r"/>
                         <outlet property="navigationBar" destination="Q0B-SV-Vmo" id="5B9-8l-uXj"/>
@@ -174,13 +168,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOQ-pr-M4w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="489.60000000000002" y="174.51274362818592"/>
-        </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="ckF-wB-OTO">
-            <objects>
-                <viewControllerPlaceholder id="gAq-75-34D" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XwP-TP-rE3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
 </document>

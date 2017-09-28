@@ -42,7 +42,7 @@ class CollectionViewController: UIViewController {
             let selectedRow = indexPath.row
             let thumbnailView = segue.destination as! SubredditImageViewController
             guard let subName = subreddits[selectedRow].subredditName else { return }
-            thumbnailView.subreddit = subName
+            thumbnailView.subredditName = subName
         }
     }
 }

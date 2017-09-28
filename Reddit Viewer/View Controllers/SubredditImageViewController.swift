@@ -1,8 +1,8 @@
 //
-//  SubredditImageViewController.swift
+//  test.swift
 //  Reddit Viewer
 //
-//  Created by Duncan MacDonald on 9/18/17.
+//  Created by Duncan MacDonald on 9/28/17.
 //
 
 import Foundation
@@ -10,150 +10,125 @@ import UIKit
 import Lightbox
 
 class SubredditImageViewController: UIViewController {
-    var subreddit: String!
-    var allImages: [LightboxImage] = []
-    var surroundingImages: [(Int, LightboxImage)]! {
-        didSet {
-            surroundingImages = surroundingImages.sorted { $0.0 < $1.0 }
-        }
-    }
-    var subService: SubredditService!
-    var controller: LightboxController!
-    var previousPage: Int!
+    @IBOutlet weak var navigationBar: UINavigationItem!
+    @IBOutlet weak var collectionView: UICollectionView!
     
+    var selectedIndex: Int!
+    var previousPage: Int!
+    var subredditName: String!
+    var allImages: [LightboxImage]!
+    var surroundingImages: [(Int, LightboxImage)]!
+    var subService: SubredditService!
     var posts: [Post] = [] {
         didSet {
             allImages = posts.map {
                 LightboxImage(imageURL: $0.imageURL, text: $0.title)
             }
-            self.collectionView.reloadData()
         }
     }
+    var imageQueue: [LightboxImage]!
     
     override func viewDidLoad() {
-        self.navigationBar.title = subreddit
-        self.subService = SubredditService(subreddit: subreddit)
+        self.navigationBar.title = subredditName
+        self.subService = SubredditService(subreddit: subredditName)
         
-        self.getMorePosts()
+        gatherPostsFromSubreddit()
     }
     
-    func getMorePosts() {
-        print("getting more posts")
+    func gatherPostsFromSubreddit() {
+        print("gathering posts")
         subService.getSomePosts {
             self.posts = self.subService.posts
             self.collectionView.reloadData()
         }
     }
     
-    @IBAction func reloadCV(_ sender: Any) {
-        self.collectionView.reloadData()
-    }
-    
-    @IBAction func unwindToSubView(segue: UIStoryboardSegue) {
-        
-    }
-    
-    @IBOutlet weak var navigationBar: UINavigationItem!
-    @IBOutlet weak var collectionView: UICollectionView!
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toImageView" {
-            let cell = sender as! UICollectionViewCell
-            let indexPath = self.collectionView!.indexPath(for: cell)
-            let post = self.posts[(indexPath?.row)!]
-            let destVC = segue.destination as! SlideshowContentViewController
-            destVC.post = post
-        }
-    }
-    
-    func getSurroundingImages(indexPath: IndexPath, completion: @escaping ([LightboxImage], Int) -> Void) {
+    func getSurroundingImageArray(indexPath: IndexPath, completion: () -> Void) -> Int {
         let bounds = 3
         var lowerBound = indexPath.row - bounds
-        var higherBound = indexPath.row + bounds
+        var upperBound = indexPath.row + bounds
         
         if indexPath.row - bounds < 0 {
             lowerBound = 0
         }
-        
         if indexPath.row + bounds > self.allImages.count {
-            higherBound = self.allImages.count
+            upperBound = self.allImages.count
         }
         
-        let surImgsSlice = ArraySlice<LightboxImage>(allImages[lowerBound...higherBound])
-        let surImgsArray = Array(surImgsSlice)
+        let surImgsArray = Array(ArraySlice<LightboxImage>(allImages[lowerBound...upperBound]))
         
-        for i in 0...surImgsSlice.count - 1 {
-            let lbImg: LightboxImage = surImgsArray[i]
-            let tuple: (Int, LightboxImage) = (lowerBound + i, lbImg)
+        for i in 0...surImgsArray.count - 1 {
+            let img: LightboxImage = surImgsArray[i]
+            let tuple: (Int, LightboxImage) = (lowerBound + i, img)
+            
+            //if not clicking on image for first time
+            //meaning surroundingImages array != nil
             if let _ = self.surroundingImages {
-                if self.surroundingImages.contains( where: { $0.0 == tuple.0 } ) {
-                    print("exists")
+                if self.surroundingImages.contains(where: { $0.0 == tuple.0 }) {
                     continue
                 } else {
+                    print("added image to array")
                     self.surroundingImages.append(tuple)
                 }
             } else {
+                print("initializing surrounding images arary")
                 self.surroundingImages = [tuple]
             }
         }
         
-        var indx: Int = 0
+        var index: Int = 0
         for i in self.surroundingImages {
-            print("indexpath: \(indexPath.row) and i: \(i.0)")
             if i.0 == indexPath.row {
                 break
             } else {
-                indx += 1
+                index += 1
             }
         }
         
-        let imgArr = surroundingImages.map { $0.1 }
-        completion(imgArr, indx)
-//        print(indx)
-//
-//        let controller = LightboxController(images: imgArr, startIndex: indx)
-//        controller.dynamicBackground = true
-//
-//        controller.pageDelegate = self
-//
-//        completion(controller)
+        completion()
+        return index
     }
 }
 
 extension SubredditImageViewController: LightboxControllerPageDelegate {
     func lightboxController(_ controller: LightboxController, didMoveToPage page: Int) {
-        print(page)
-        if page >= posts.count - 5 {
-            self.getMorePosts()
+        if let previousPage = previousPage {
+            print("current index: \(self.selectedIndex!)")
+            if page > previousPage {
+                print("up to \(selectedIndex + 1)")
+                self.selectedIndex! += 1
+            } else if page < previousPage {
+                print("down to \(selectedIndex - 1)")
+                self.selectedIndex! -= 1
+            }
+            
         }
         
-        self.getSurroundingImages(indexPath: IndexPath(item: page, section: 0)) { (imgArr, index) in
-            self.controller.images = imgArr
-//            self.controller.goTo(index)
-//            self.controller.configureLayout()
-            print("maybe worked")
-        }
-        
-        self.collectionView.scrollToItem(at: IndexPath(item: page, section: 0), at: UICollectionViewScrollPosition.centeredVertically, animated: false)
+        previousPage = page
     }
 }
 
 extension SubredditImageViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return posts.count
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.getSurroundingImages(indexPath: indexPath) { (imgArr, index) in
-            self.controller = LightboxController(images: imgArr, startIndex: index)
-            self.controller.pageDelegate = self
-            self.controller.dynamicBackground = true
-            self.present(self.controller, animated: true, completion: nil)
+        selectedIndex = self.getSurroundingImageArray(indexPath: indexPath) {
+            self.surroundingImages = self.surroundingImages.sorted(by: { $0.0 < $1.0 })
         }
+        
+        self.imageQueue = surroundingImages.map { $0.1 }
+        
+        let controller = LightboxController(images: self.imageQueue, startIndex: selectedIndex)
+        controller.pageDelegate = self
+        controller.dynamicBackground = true
+        
+        self.present(controller, animated: true, completion: nil)
     }
 }
 
 extension SubredditImageViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ThumbnailCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ThumbnailCell", for: indexPath) as! ThumbnailCell
         let post = posts[indexPath.row]
@@ -172,7 +147,7 @@ extension SubredditImageViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row >= posts.count - 1 {
-            self.getMorePosts()
+            self.gatherPostsFromSubreddit()
         }
     }
 }
