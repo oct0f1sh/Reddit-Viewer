@@ -18,6 +18,8 @@ class SubredditImageViewController: UIViewController {
         }
     }
     var subService: SubredditService!
+    var controller: LightboxController!
+    var previousPage: Int!
     
     var posts: [Post] = [] {
         didSet {
@@ -36,6 +38,7 @@ class SubredditImageViewController: UIViewController {
     }
     
     func getMorePosts() {
+        print("getting more posts")
         subService.getSomePosts {
             self.posts = self.subService.posts
             self.collectionView.reloadData()
@@ -62,21 +65,8 @@ class SubredditImageViewController: UIViewController {
             destVC.post = post
         }
     }
-}
-
-extension SubredditImageViewController: LightboxControllerPageDelegate {
-    func lightboxController(_ controller: LightboxController, didMoveToPage page: Int) {
-        collectionView.selectItem(at: IndexPath(item: page, section: 0), animated: true, scrollPosition: UICollectionViewScrollPosition.centeredVertically)
-    }
-}
-
-extension SubredditImageViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return posts.count
-    }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+    func getSurroundingImages(indexPath: IndexPath, completion: @escaping ([LightboxImage], Int) -> Void) {
         let bounds = 3
         var lowerBound = indexPath.row - bounds
         var higherBound = indexPath.row + bounds
@@ -118,14 +108,48 @@ extension SubredditImageViewController: UICollectionViewDelegate {
         }
         
         let imgArr = surroundingImages.map { $0.1 }
-        print(indx)
+        completion(imgArr, indx)
+//        print(indx)
+//
+//        let controller = LightboxController(images: imgArr, startIndex: indx)
+//        controller.dynamicBackground = true
+//
+//        controller.pageDelegate = self
+//
+//        completion(controller)
+    }
+}
+
+extension SubredditImageViewController: LightboxControllerPageDelegate {
+    func lightboxController(_ controller: LightboxController, didMoveToPage page: Int) {
+        print(page)
+        if page >= posts.count - 5 {
+            self.getMorePosts()
+        }
         
-        let controller = LightboxController(images: imgArr, startIndex: indx)
-        controller.dynamicBackground = true
+        self.getSurroundingImages(indexPath: IndexPath(item: page, section: 0)) { (imgArr, index) in
+            self.controller.images = imgArr
+//            self.controller.goTo(index)
+//            self.controller.configureLayout()
+            print("maybe worked")
+        }
         
-        controller.pageDelegate = self
-        
-        present(controller, animated: true, completion: nil)
+        self.collectionView.scrollToItem(at: IndexPath(item: page, section: 0), at: UICollectionViewScrollPosition.centeredVertically, animated: false)
+    }
+}
+
+extension SubredditImageViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.getSurroundingImages(indexPath: indexPath) { (imgArr, index) in
+            self.controller = LightboxController(images: imgArr, startIndex: index)
+            self.controller.pageDelegate = self
+            self.controller.dynamicBackground = true
+            self.present(self.controller, animated: true, completion: nil)
+        }
     }
 }
 
