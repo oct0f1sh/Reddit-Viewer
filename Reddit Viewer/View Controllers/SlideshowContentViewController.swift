@@ -22,7 +22,7 @@ class SlideshowContentViewController: UIViewController {
         print("view loaded")
     }
     
-    //commit
+    //you know what this is for
     
     @IBAction func exitButtonTapped(_ sender: Any) {
         print("exit button tapped")
