@@ -1,7 +1,7 @@
 # Reddit Viewer
 Mobile Reddit client that compiles all images in a subreddit into one clean collection view.
 
-![Home Screen](http://resizeimage.net/mypic/AGJ8cTCnqArtpBxa/MSui7/simulator-screen-shot---iphone.png) ![Collection View](http://resizeimage.net/mypic/lrPKU3GlikvBKfPF/ozQ3r/simulator-screen-shot---iphone.png) ![Image View](http://resizeimage.net/mypic/7dXdKvTKE9xXzgUi/RRkzi/simulator-screen-shot---iphone.png)
+![Home Screen](https://github.com/oct0f1sh/Reddit-Viewer/blob/master/home.png) ![Collection View](https://github.com/oct0f1sh/Reddit-Viewer/blob/master/collection.png) ![Image View](https://github.com/oct0f1sh/Reddit-Viewer/blob/master/image.png)
 
 ## Getting Started
 Reddit Viewer requires a Swift 4 compatible version of the Lightbox Library. This is available at [hyperoslo's Lightbox repository.](https://github.com/hyperoslo/Lightbox)
